@@ -1,0 +1,40 @@
+#include <stdio.h>
+ int main()
+ {
+     int ms[1000];
+     int j =0;
+     while ( !feof(stdin) ) {
+         int i = getchar();
+         int f;
+         switch (i) {
+             case  ' ':
+             case '\n':
+                 break;
+             case '=':
+                 printf("Result = %d\n", ms[j - 1]);  j--;
+                 break;
+             case '+':
+                ms[j-2] = ms[j-2] + ms[j-1];  j--;
+                break;
+             case '-':
+                ms[j-2] = ms[j-2] - ms[j-1];  j--;
+                break;
+             case '*':
+                ms[j-2] = ms[j-1] * ms[j-2];  j--;
+                break;
+             case '/':
+               ms[j-2] = ms[j-2] / ms[j-1];   j--;
+                break;
+             default:
+                 ungetc (i, stdin);
+                 if (scanf("%d", &f) != 1) {
+                     fprintf(stderr, "Error\n");
+                     return -1;
+                 } else {
+                     ms[j] = f;                      j++;
+                 }
+         }
+     }
+     printf("Result = %d\n",ms[j-1]);
+     return 0;
+ }
