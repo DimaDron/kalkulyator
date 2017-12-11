@@ -15,14 +15,14 @@ if(argc >= 2)
 }
 else
 {
-   printf("Enter file name:");
+   printf("Введите имя файла:");
    scanf("%s", name);
 }
 
 file = fopen(name, "r");
 if (file == NULL)
 {
-   printf("file didn't open or find");
+   printf("файл не найден");
    exit(-1);
 }
 
@@ -33,7 +33,7 @@ for(i=0;i<256; i++)
 str[i]='\0';
 }
 
-printf("Enter searching string:");
+printf("открыть поисковую строку:");
 scanf("%s", search);
 
 while((feof(file)) == 0)
